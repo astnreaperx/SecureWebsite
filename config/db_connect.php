@@ -2,8 +2,8 @@
     // Connnection to the Local Host DB
     // Super Secret File
     $servername = "localhost";
-    $username = "aslota";
-    $password = "jetadmin";
+    $username = "blogadmin";
+    $password = "password";
     $db = "blog";
 
     // Database Connection Code

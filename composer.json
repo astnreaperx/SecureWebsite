@@ -1,0 +1,12 @@
+{
+    "name": "aslota/secure-website",
+    "authors": [
+        {
+            "name": "astnreaperx",
+            "email": "austin.slota@gmail.com"
+        }
+    ],
+    "require": {
+        "owasp/phprbac": "2.0.*@dev"
+    }
+}

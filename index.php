@@ -3,6 +3,7 @@
 	session_start();
     require 'config/db_connect.php';
     require 'config/pdo_connect.php';
+    require 'vendor/autoload.php';
 
     $data = $db->prepare("SELECT * FROM posts ORDER BY created_at DESC");
 	$data->execute();
