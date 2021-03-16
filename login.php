@@ -29,7 +29,7 @@
 
 <body>
 <div class="w3-content" style="max-width:1100px;margin-top:80px;margin-bottom:80px">
-	<form name="form1" method="post" action="check_login.php"> 
+	<form name="form1" method="post" action="scripts/check_login.php"> 
 			<table width="100%" border="0" cellpadding="3" cellspacing="1" >
 				<tr>
 					<td colspan="3"><strong>Member Login </strong></td>
