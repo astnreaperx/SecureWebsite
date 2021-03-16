@@ -27,7 +27,8 @@
         echo "<br>".$timeout;
         echo "<br>".$timenow;
         
-        if( $timenow < $timeout ) 
+        // if timeout is before time now
+        if($timenow < $timeout ) 
         {
             echo "<br> wait 15 min";
             $account_locked = true;
@@ -52,7 +53,7 @@
         $_SESSION['username'] = $_POST['username'];
         $_SESSION['userid'] = $pass['id'];
         echo "Success";
-        header("Refresh:3; url=index.php");
+        //header("Refresh:3; url=index.php");
 
         // Reset login
         $data = $db->prepare( 'UPDATE members SET failed_login = "0" WHERE username = (:username) LIMIT 1;' );
