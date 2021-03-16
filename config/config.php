@@ -13,7 +13,7 @@
   define('ADMIN_ADDRESS','blog_admin@mailinator.com');
 
   define('DB_HOSTNAME', 'localhost');
-  define('DB_USER',     'bloguser');
+  define('DB_USER',     'blogadmin');
   define('DB_PASS',     'password');
   define('DB_DSN',      'mysql:host=localhost;dbname=blog;charset=utf8');
   

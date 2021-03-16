@@ -1,5 +1,8 @@
 <?php
     require 'config/db_connect.php';
+	require 'vendor/autoload.php';
+    use PhpRbac\Rbac;
+    $rbac = new Rbac();
 
 	// check is there is an error if so assign to
 	if (isset($_GET['error']))
@@ -54,19 +57,23 @@ if(isset($_POST['username']))
 	}
 	if(count($errors) == 0) 
 	{// salting adds uniqueness to each entry
+		echo "Test";
 		$salt=uniqid() ;
 		$salted_password=$salt.$mypassword;
 		$encrypted_password = hash("sha512", $salted_password);
-
-		$insert_sql="insert into members (username,password,salt,email) values (:myusername,:encrypted_password,:salt,:email)";
-		$statement = $db->prepare($insert_sql);
-		$statement->bindParam(':myusername',$myusername);
-		$statement->bindParam(':encrypted_password',$encrypted_password);
-		$statement->bindParam(':salt',$salt);
-		$statement->bindParam(':email',$myemail);
-		$statement->execute() or die(print_r($statement->errorInfo(), true));
-		$pass = $statement->fetch();
-
+		echo " Test 1";
+		$insert_sql = "INSERT INTO members (username, password, salt, email) VALUES (:myusername, :encrypted_password, :salt, :email)";
+		echo " Test 2";
+		$statement2 = $db->prepare($insert_sql);
+		$statement2->bindParam(':myusername',$myusername);
+		$statement2->bindParam(':encrypted_password',$encrypted_password);
+		$statement2->bindParam(':salt',$salt);
+		$statement2->bindParam(':email',$myemail);
+		echo " Test 3";
+		$statement2->execute() or die(print_r($statement2->errorInfo(), true));
+		echo " Test 4";
+		$pass = $statement2->fetch();
+		echo $pass;
 		echo "Registered";
 		// Added this to redirect to home page
 		header("Refresh:3; url=login.php");

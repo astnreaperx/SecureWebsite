@@ -1,11 +1,32 @@
 <?php
-require 'config/db_connect.php';
-require 'config/pdo_connect.php'; 
+    ob_start();
+    session_start();
+    require 'config/db_connect.php';
+    require 'config/pdo_connect.php'; 
 
-if(isset($_POST['ptitle']))
-{
+    require 'vendor/autoload.php';
+    use PhpRbac\Rbac;
+    $rbac = new Rbac();
+    $role_id = $rbac->Roles->returnId('admin');
 
-}
+    $g_page = 'admin';
+    
+    // Verify User
+    if ($rbac->Users->hasRole($role_id, $_SESSION['userid']))
+    {
+        $var_testoutput ="<p>You are admin, and should be here.</p>";
+    }
+    else {
+        $var_testoutput ="<h2>You should not be here!</h2>";
+    }	
+
+
+    if(isset($_POST['ptitle']))
+    {
+
+    }
+
+
 
 ?>
 
@@ -20,6 +41,9 @@ if(isset($_POST['ptitle']))
 </head>
 <?php require 'shared/header.php' ?>
 <body>
+
+    <?php echo($var_testoutput) ?>
+
     <form action="" method="post">
         <label for="ptitle">Post Title:</label><br>
         <input type="text" id="ptitle" name="ptitle"><br>
