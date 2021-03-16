@@ -9,6 +9,8 @@
     $lockout_time       = 15;
     $account_locked     = false;
 
+    date_default_timezone_set("America/Winnipeg");
+
     $user=$_POST['username'];
 
     $data = $db->prepare( "SELECT failed_login, last_login FROM members WHERE username = (:username) LIMIT 1;");
@@ -20,18 +22,18 @@
     {
         echo "<pre><br />This account has been locked due to too many incorrect logins.</pre>";
         header("Refresh:3; url=login.php");
-
         $last_login = strtotime( $row['last_login' ] );
-        $timeout    = $last_login + ($lockout_time * 60);
+        $timeout    = $last_login + ($lockout_time);
         $timenow    = time();
-        echo "<br>".$timeout;
-        echo "<br>".$timenow;
+        print "The timenow is: " . date ("h:i:s", $timenow) . "<br />";
+        print "The timeout is: " . date ("h:i:s", $timeout) . "<br />";
         
         // if timeout is before time now
         if($timenow < $timeout ) 
         {
             echo "<br> wait 15 min";
             $account_locked = true;
+            die();
         }		
     }
 
@@ -53,7 +55,7 @@
         $_SESSION['username'] = $_POST['username'];
         $_SESSION['userid'] = $pass['id'];
         echo "Success";
-        //header("Refresh:3; url=index.php");
+        header("Refresh:3; url=index.php");
 
         // Reset login
         $data = $db->prepare( 'UPDATE members SET failed_login = "0" WHERE username = (:username) LIMIT 1;' );
