@@ -1,4 +1,10 @@
 <?php
+    /* Austin Reaper
+    *  Programmer
+    *  March 2021
+    *  Goose Corp.
+    */
+    
     require 'config.php';
 
     try {

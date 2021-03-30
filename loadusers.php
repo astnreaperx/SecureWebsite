@@ -1,4 +1,10 @@
 <?php
+    /* Austin Reaper
+    *  Programmer
+    *  March 2021
+    *  Goose Corp.
+    */
+	
   	ob_start();
 	session_start();
 	require 'config/db_connect.php';

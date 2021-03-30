@@ -1,4 +1,10 @@
 <?php
+    /* Austin Reaper
+    *  Programmer
+    *  March 2021
+    *  Goose Corp.
+    */
+    
     // Connnection to the Local Host DB
     // Super Secret File
     $servername = "localhost";

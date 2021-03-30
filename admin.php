@@ -1,4 +1,10 @@
 <?php
+    /* Austin Reaper
+    *  Programmer
+    *  March 2021
+    *  Goose Corp.
+    */
+
     ob_start();
     session_start();
     require 'config/db_connect.php';
@@ -10,11 +16,24 @@
     $role_id = $rbac->Roles->returnId('admin');
 
     $g_page = 'admin';
+
+    $form = <<<EOD
+    <form action="scripts/check_admin_post.php" method="post">
+    <label for="ptitle">Post Title:</label><br>
+    <input type="text" id="ptitle" name="ptitle"><br>
+    <label for="pPoster">Post Author:</label><br>
+    <input type="text" id="pPoster" name="pPoster"><br>
+    <label for="pcontent">Post Content:</label><br>
+    <textarea id="pcontent" name="pcontent" rows="10" ></textarea><br>
+    <input type="submit" value="Post">
+    </form>
+    EOD;
+
     
     // Verify User
     if ($rbac->Users->hasRole($role_id, $_SESSION['userid']))
     {
-        $var_testoutput ="<p>You are admin, and should be here.</p>";
+        $var_testoutput = $form;
     }
     else {
         $var_testoutput ="<h2>You should not be here!</h2>";
@@ -41,16 +60,6 @@
 </head>
 <?php require 'shared/header.php' ?>
 <body>
-
     <?php echo($var_testoutput) ?>
-
-    <form action="" method="post">
-        <label for="ptitle">Post Title:</label><br>
-        <input type="text" id="ptitle" name="ptitle"><br>
-
-        <label for="pcontent">Post Content:</label><br>
-        <textarea id="pcontent" name="pcontent" rows="10" ></textarea><br>
-
-    </form>
 </body>
 </html>
