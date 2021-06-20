@@ -46,7 +46,8 @@
 	$user = $statement->fetch();
 
 	if($user) 
-	{// if user exists, which field?
+	{
+		// if user exists, which field?
 		if ($user['username'] == $myusername) {
 			array_push($errors, "Username already exists!");
 		}
@@ -55,30 +56,26 @@
 		}
 	}
 	if(count($errors) == 0) 
-	{// salting adds uniqueness to each entry
-		echo "Test";
+	{
+		// salting adds uniqueness to each entry
 		$salt=uniqid() ;
 		$salted_password=$salt.$mypassword;
 		$encrypted_password = hash("sha512", $salted_password);
-		echo " Test 1";
 		$insert_sql = "INSERT INTO members (username, password, salt, email) VALUES (:myusername, :encrypted_password, :salt, :email)";
-		echo " Test 2";
 		$statement2 = $db->prepare($insert_sql);
 		$statement2->bindParam(':myusername',$myusername);
 		$statement2->bindParam(':encrypted_password',$encrypted_password);
 		$statement2->bindParam(':salt',$salt);
 		$statement2->bindParam(':email',$myemail);
-		echo " Test 3";
 		$statement2->execute() or die(print_r($statement2->errorInfo(), true));
-		echo " Test 4";
 		$pass = $statement2->fetch();
-		echo $pass;
 		echo "Registered";
-		// Added this to redirect to home page
 		header("Refresh:3; url=../login.php");
 	}
 	else
 	{
+		// Echo any errors to the page
+    	// Do not depoloy like this, error codes baby !!
 		foreach ($errors as $error) {
             echo "<p>$error</p>";  
         }

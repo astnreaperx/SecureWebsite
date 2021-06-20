@@ -20,17 +20,28 @@
     $errors = array();
 
     // Assign post data to variables
-    $pTitle=$_POST["ptitle"];
-    $pContent=$_POST["pcontent"];
-    $pPoster=$_POST["poster"];
-    $pDate='';
+    $title=$_POST["ptitle"];
+    $content=$_POST["pcontent"];
+    $author=$_POST["author"];
+    $date=date('Y-m-d H:i:s');
 
     // Ensure no post data is empty
-    if (empty($pTitle)) { array_push($errors, "Title is required!"); }
-	if (empty($pPoster)) { array_push($errors, "Author is required!"); }
-	if (empty($pContent)) { array_push($errors, "Content is required!"); }
+    if (empty($title)) { array_push($errors, "Title is required!"); }
+	if (empty($author)) { array_push($errors, "Author is required!"); }
+	if (empty($content)) { array_push($errors, "Content is required!"); }
 
-
+    if (count($errors) == 0) {
+        $insert_sql = "INSERT INTO posts (title, author, content) VALUES (:title, :author, :content)";
+		$statement2 = $db->prepare($insert_sql);
+		$statement2->bindParam(':title',$title);
+		$statement2->bindParam(':author',$author);
+		$statement2->bindParam(':content',$content);
+		//$statement2->bindParam(':date',$date);
+		$statement2->execute() or die(print_r($statement2->errorInfo(), true));
+		$statement2->fetch();
+		echo "Posted";
+		header("Refresh:3; url=../index.php");
+    }
     // Echo any errors to the page
     // Do not depoloy like this, error codes baby !!
     foreach ($errors as $error) {

@@ -14,7 +14,7 @@
     use PhpRbac\Rbac;
     $rbac = new Rbac();
 
-    $data = $db->prepare("SELECT * FROM posts ORDER BY created_at DESC");
+    $data = $db->prepare("SELECT * FROM posts ORDER BY created_at ASC");
 	$data->execute();
 	$posts = $data->fetchAll();
 ?>

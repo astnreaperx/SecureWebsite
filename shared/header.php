@@ -32,7 +32,7 @@ if (!isset($g_page))
                 </div>
 
                 <div>
-                    <a href="">About</a>
+                    <a href="about.php">About</a>
                 </div>
             </ul>
         </div>

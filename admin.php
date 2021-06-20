@@ -9,11 +9,11 @@
     session_start();
     require 'config/db_connect.php';
     require 'config/pdo_connect.php'; 
-
-    require 'vendor/autoload.php';
+    require_once 'vendor/autoload.php';
     use PhpRbac\Rbac;
     $rbac = new Rbac();
-    $role_id = $rbac->Roles->returnId('admin');
+    // Admin page was not loading, the fix was to get the proper role
+    $role_id = $rbac->Roles->returnId('aslota');
 
     $g_page = 'admin';
 
@@ -21,32 +21,25 @@
     <form action="scripts/check_admin_post.php" method="post">
     <label for="ptitle">Post Title:</label><br>
     <input type="text" id="ptitle" name="ptitle"><br>
-    <label for="pPoster">Post Author:</label><br>
-    <input type="text" id="pPoster" name="pPoster"><br>
+    <label for="author">Post Author:</label><br>
+    <input type="text" id="author" name="author"><br>
     <label for="pcontent">Post Content:</label><br>
     <textarea id="pcontent" name="pcontent" rows="10" ></textarea><br>
     <input type="submit" value="Post">
     </form>
     EOD;
 
-    
+    echo("Test");
     // Verify User
-    if ($rbac->Users->hasRole($role_id, $_SESSION['userid']))
-    {
+    if ($rbac->Users->hasRole($role_id, $_SESSION['userid']) ){
         $var_testoutput = $form;
+        echo("Your Admin");
+        
     }
     else {
-        $var_testoutput ="<h2>You should not be here!</h2>";
+        echo("Not Admin");
+        $var_testoutput = "<h2>You should not be here!</h2>";
     }	
-
-
-    if(isset($_POST['ptitle']))
-    {
-
-    }
-
-
-
 ?>
 
 
@@ -60,6 +53,6 @@
 </head>
 <?php require 'shared/header.php' ?>
 <body>
-    <?php echo($var_testoutput) ?>
+    <?php echo $var_testoutput; ?>
 </body>
 </html>
