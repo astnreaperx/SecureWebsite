@@ -7,6 +7,7 @@
         }
     ],
     "require": {
-        "owasp/phprbac": "2.0.*@dev"
+        "owasp/phprbac": "2.0.*@dev",
+        "stripe/stripe-php": "^7.85"
     }
 }

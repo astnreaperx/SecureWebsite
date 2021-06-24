@@ -7,9 +7,9 @@
     
 	ob_start();
 	session_start();
+    
     require 'config/db_connect.php';
     require 'config/pdo_connect.php';
-    
     require 'vendor/autoload.php';
     use PhpRbac\Rbac;
     $rbac = new Rbac();
@@ -20,21 +20,29 @@
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
 
+<?php require 'shared/head.php'; ?>
+
+<div class="container">
 <?php require 'shared/header.php'; ?>
-<body>
-    <div>
-        <?php foreach($posts as $post): ?>
-            <h1><?= $post['title'] ?></h1>
-            <p><?= $post['content'] ?></p>
-        <?php endforeach; ?>
-    </div>
-</body>
+    <body>
+        <div class="row">
+            <div class="col-md-8">
+                <?php foreach($posts as $post): ?>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a href="showpost.php?id=<?= $post['id'];?>" ><?= $post['title'];?> </a>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+            <div class="col-md-4">
+                <h2>Testing like an article thing</h2>
+                <p>que, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti. Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus libero, faucibus adipiscing, commodo quis, gravida id, est. Sed lectus. Praesent elementum hendrerit tortor. Sed semper lorem at</p>
+            </div>
+        </div>
+    </body>
+<?php require 'shared/footer.php'; ?>
+<link href="images/favicon.ico" rel="icon" type="image/x-icon" />
+</div>
 </html>

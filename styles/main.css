@@ -1,0 +1,28 @@
+/* Main Body */
+body{
+    background-color: aquamarine;
+    color: rebeccapurple;
+}
+
+/* Main Container */
+body .container{
+    background-color: teal;
+}
+ /* Header */
+header{
+    background-color: yellow;
+}
+
+/* Footer */
+footer{
+    background-color: yellow;
+}
+
+footer ul{
+    padding: 10px;
+}
+
+/* This is for the blog body links */
+body .container .row .row a{
+    color: pink;
+}
