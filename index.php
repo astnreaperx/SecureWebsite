@@ -10,11 +10,14 @@
     
     require 'config/db_connect.php';
     require 'config/pdo_connect.php';
-    require 'vendor/autoload.php';
+    require __DIR__.'/vendor/autoload.php';
+    require_once 'PhpRbac/autoload.php'; 
+
+    //Error HEAR
     use PhpRbac\Rbac;
     $rbac = new Rbac();
 
-    $data = $db->prepare("SELECT * FROM posts ORDER BY created_at ASC");
+    $data = $db->prepare("SELECT * FROM posts"); //ORDER BY created_at ASC
 	$data->execute();
 	$posts = $data->fetchAll();
 ?>

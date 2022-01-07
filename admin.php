@@ -10,6 +10,7 @@
     require 'config/db_connect.php';
     require 'config/pdo_connect.php'; 
     require_once 'vendor/autoload.php';
+    require_once 'PhpRbac/autoload.php'; 
     use PhpRbac\Rbac;
     $rbac = new Rbac();
 
@@ -18,9 +19,13 @@
     echo $user_id;
     
     # all non logged in users
-    if($user_id = 0){
-        $var_testoutput = "<h2>You should not be here!</h2>";
-    }
+    if ($rbac->Users->hasRole($role_id, $_SESSION['userid']))
+	{
+		$var_testoutput ="<p>You are admin, and should be here.</p>";
+	}
+	else {
+		$var_testoutput ="<h2>You should not be here!</h2>";
+	}	
 
     $g_page = 'admin';
 

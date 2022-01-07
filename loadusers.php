@@ -9,19 +9,11 @@
 	session_start();
 	require 'config/db_connect.php';
 	require 'config/config.php';
-	
-  	require 'vendor/autoload.php';
+	require_once 'PhpRbac/autoload.php'; 
+
     use PhpRbac\Rbac;
     $rbac = new Rbac();
 	
-	// Create a Permission
-	$perm_id = $rbac->Permissions->add('admin', 'Administer Site');
-	
-	// Create a Role
-	$role_id = $rbac->Roles->add('admin', 'Administrator');
-	// Create Role/Permission Association
-	// We don't need to query as we just set the variables above, but for reuse in the
-	// future, we query the IDs from the database
 	$perm_id = $rbac->Permissions->returnId('admin');
 	
 	$role_id = $rbac->Roles->returnId('admin');	
@@ -31,7 +23,7 @@
 
 	// Assign Role to User (The UserID is provided by the application's User Management System)
 	// for my system, my admin ID is 9, you will have to retrieve your ID
-	$rbac->Users->assign($role_id, 2);
+	$rbac->Users->assign($role_id, 18);
 ?>
 
 <div id="">

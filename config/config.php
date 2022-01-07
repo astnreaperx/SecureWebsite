@@ -22,16 +22,16 @@
   define('DB_PASS',     'password');
   define('DB_DSN',      'mysql:host=localhost;dbname=blog;charset=utf8');
   
-  define('BLOG_NAME','Stung Eye');
+  define('BLOG_NAME','Blog');
   define('BLOG_INDEX_NUM_POSTS',5);
   
-  function format_mysql_datetime($datetime){
-    $time = strtotime($datetime);
-    return date('F j, Y, g:i a', $time);
-  }
+  // function format_mysql_datetime($datetime){
+  //   $time = strtotime($datetime);
+  //   return date('F j, Y, g:i a', $time);
+  // }
   
-  function redirect($script_name = 'index.php'){
-    header("Location: $script_name");
-    exit;
-  }
+  // function redirect($script_name = 'index.php'){
+  //   header("Location: $script_name");
+  //   exit;
+  // }
 ?>
