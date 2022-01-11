@@ -1,5 +1,9 @@
 <?php
-session_start();
+
+if(!isset($_SESSION)) 
+{ 
+    session_start(); 
+} 
 
 if (!isset($g_page)) 
 {
@@ -18,7 +22,7 @@ if (!isset($g_page))
                         </li>
                     </div>
 
-                    <?php if(!$_SESSION['username']): ?>
+                    <?php if(!isset($_SESSION['username'])): ?>
                     <div>
                         <li class="list-group-item">
                             <a href="login.php">Login</a>
@@ -26,7 +30,7 @@ if (!isset($g_page))
                     </div>
                     <?php endif; ?>
 
-                    <?php if($_SESSION['username']): ?>
+                    <?php if(isset($_SESSION['username'])): ?>
                     <div>
                         <li class="list-group-item">
                             <a href="logout.php">Logout</a>

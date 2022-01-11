@@ -10,7 +10,8 @@
     require 'config/db_connect.php';
     require 'config/pdo_connect.php'; 
     require_once 'vendor/autoload.php';
-    require_once 'PhpRbac/autoload.php'; 
+    #require_once 'PhpRbac/autoload.php'; 
+    
     use PhpRbac\Rbac;
     $rbac = new Rbac();
 

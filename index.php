@@ -11,7 +11,7 @@
     require 'config/db_connect.php';
     require 'config/pdo_connect.php';
     require __DIR__.'/vendor/autoload.php';
-    require_once 'PhpRbac/autoload.php'; 
+    #require_once 'PhpRbac/autoload.php'; 
 
     //Error HEAR
     use PhpRbac\Rbac;
