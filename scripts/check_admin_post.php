@@ -31,10 +31,9 @@
 	if (empty($content)) { array_push($errors, "Content is required!"); }
 
     if (count($errors) == 0) {
-        $insert_sql = "INSERT INTO posts (title, author, content) VALUES (:title, :author, :content)";
+        $insert_sql = "INSERT INTO posts (title, content) VALUES (:title, :content)";
 		$statement2 = $db->prepare($insert_sql);
 		$statement2->bindParam(':title',$title);
-		$statement2->bindParam(':author',$author);
 		$statement2->bindParam(':content',$content);
 		//$statement2->bindParam(':date',$date);
 		$statement2->execute() or die(print_r($statement2->errorInfo(), true));

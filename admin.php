@@ -16,11 +16,7 @@
 
     $role_id = $rbac->Roles->returnId('admin');
     $user_id = $_SESSION['userid'];
-    echo $user_id;
 
-    $g_page = 'admin';
-
-    echo("Test");
     // Verify User
     // will show nothing if not user id
     if ($rbac->Users->hasRole($role_id, $user_id))
@@ -40,19 +36,16 @@
         $var_testoutput = "<h2>You should not be here!</h2>";
     }	
 ?>
-
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/bootstrap.css">
-    <script src="styles/bootstrap.bundle.js"></script>
-    <title>Document</title>
-</head>
-<?php require 'shared/header.php' ?>
-<body>
-    <?php echo $var_testoutput; ?>
-</body>
+
+    <?php require 'shared/head.php'; ?>
+
+    <div class="container">
+        <?php require 'shared/header.php'; ?>
+            <body>
+                <?php echo $var_testoutput; ?>
+            </body>
+        <?php require 'shared/footer.php'; ?>
+        <link href="images/favicon.ico" rel="icon" type="image/x-icon" />
+    </div>
 </html>

@@ -5,12 +5,8 @@
     *  Goose Corp.
     */
 	
-	require 'config/db_connect.php';
 	require 'config/pdo_connect.php';
 	require 'vendor/autoload.php';
-
-	use PhpRbac\Rbac;
-    $rbac = new Rbac();
 
 	// check is there is an error if so assign to
 	if (isset($_POST['errors']))
@@ -24,17 +20,10 @@
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="styles/bootstrap.css">
-    <script src="styles/bootstrap.bundle.js"></script>
-    <title>Document</title>
-</head>
-
+<?php require 'shared/head.php'; ?>
+<div class="container">
 <?php require 'shared/header.php'; ?>
+	<body>
 	<form name="form1" method="post" action="scripts/check_register.php">
 		<td>
 			<table width="100%" border="0" cellpadding="3" cellspacing="1" >
@@ -46,13 +35,13 @@
 				<tr>
 				<td>Username</td>
 				<td>:</td>
-				<td><input type="text" name="username" id="username" required value="<?= $myusername ?>"></td>
+				<td><input type="text" name="username" id="username" required "></td>
 				</tr>
 
 				<tr>
 				<td>Email</td>
 				<td>:</td>
-				<td><input type="text" name="email" id="email" required value="<?= $myemail ?>"></td>
+				<td><input type="text" name="email" id="email" required "></td>
 				</tr>
 
 				<tr>
@@ -77,6 +66,7 @@
 		</td>
 	</form>
 </body>
+</div>
 </html>
 
 <?php if(isset($error)): ?>
