@@ -7,33 +7,24 @@
 
     ob_start();
     session_start();
-    require 'config/db_connect.php';
+    #require 'config/db_connect.php';
     require 'config/pdo_connect.php'; 
-    require_once 'vendor/autoload.php';
+    require 'vendor/autoload.php';
     #require_once 'PhpRbac/autoload.php'; 
-    
-    use PhpRbac\Rbac;
-    $rbac = new Rbac();
+
+    $rbac = new \PhpRbac\Rbac();
 
     $role_id = $rbac->Roles->returnId('admin');
     $user_id = $_SESSION['userid'];
     echo $user_id;
-    
-    # all non logged in users
-    if ($rbac->Users->hasRole($role_id, $_SESSION['userid']))
-	{
-		$var_testoutput ="<p>You are admin, and should be here.</p>";
-	}
-	else {
-		$var_testoutput ="<h2>You should not be here!</h2>";
-	}	
 
     $g_page = 'admin';
 
     echo("Test");
     // Verify User
     // will show nothing if not user id
-    if ($rbac->Users->hasRole($role_id, $user_id) ){
+    if ($rbac->Users->hasRole($role_id, $user_id))
+    {
         $var_testoutput = <<<EOD
         <form action="scripts/check_admin_post.php" method="post">
         <label for="ptitle">Post Title:</label><br>

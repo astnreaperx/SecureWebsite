@@ -7,4 +7,6 @@ install composer
 
 then in the dir do a composer install
 
+Makes sure to confiug the RBAC DB Config
+
 

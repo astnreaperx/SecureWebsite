@@ -7,15 +7,20 @@
 	
   	ob_start();
 	session_start();
-	require 'config/db_connect.php';
-	require 'config/config.php';
-	require_once 'PhpRbac/autoload.php'; 
 
-    use PhpRbac\Rbac;
-    $rbac = new Rbac();
-	
+	require 'config/pdo_connect.php';
+    require 'vendor/autoload.php';
+
+	$rbac = new \PhpRbac\Rbac();
+
+	// Create a Permission
+	$perm_id = $rbac->Permissions->add('admin', 'Administer Site');
+	// Create a Role
+	$role_id = $rbac->Roles->add('admin', 'Administrator');
+	// Create Role/Permission Association
+	// We don't need to query as we just set the variables above, but for reuse in the
+	// future, we query the IDs from the database
 	$perm_id = $rbac->Permissions->returnId('admin');
-	
 	$role_id = $rbac->Roles->returnId('admin');	
 	// The following are equivalent statements
 	// $rbac->Permissions->assign($role_id, $perm_id);
