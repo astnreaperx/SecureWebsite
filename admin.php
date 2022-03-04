@@ -19,9 +19,10 @@
 
     // Verify User
     // will show nothing if not user id
-    if ($rbac->Users->hasRole($role_id, $user_id))
+    if ( isset($_SESSION['userid']) && $rbac->Users->hasRole($role_id, $_SESSION['userid']))
     {
         $var_testoutput = <<<EOD
+        <?php require 'shared/head.php'; ?>
         <form action="scripts/check_admin_post.php" method="post">
         <label for="ptitle">Post Title:</label><br>
         <input type="text" id="ptitle" name="ptitle"><br>

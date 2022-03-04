@@ -1,14 +1,5 @@
 <?php
 
-if(!isset($_SESSION)) 
-{ 
-    session_start(); 
-} 
-
-if (!isset($g_page)) 
-{
-    $g_page = '';
-}
 ?>
 
 <header>
@@ -22,25 +13,9 @@ if (!isset($g_page))
                         </li>
                     </div>
 
-                    <?php if(!isset($_SESSION['username'])): ?>
                     <div>
                         <li class="list-group-item">
-                            <a href="login.php">Login</a>
-                        </li>
-                    </div>
-                    <?php endif; ?>
-
-                    <?php if(isset($_SESSION['username'])): ?>
-                    <div>
-                        <li class="list-group-item">
-                            <a href="logout.php">Logout</a>
-                        </li>
-                    </div>
-                    <?php endif; ?>
-
-                    <div>
-                        <li class="list-group-item">
-                            <a href="register.php">Register</a>
+                            <a href="shop.php" >Shop</a>
                         </li>
                     </div>
 

@@ -7,7 +7,6 @@
 
     ob_start();
     session_start();
-    require 'config/db_connect.php';
     require 'config/pdo_connect.php'; 
 
 ?>
