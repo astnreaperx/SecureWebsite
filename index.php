@@ -29,7 +29,7 @@
 <?php require 'shared/header.php'; ?>
     <body>
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-9">
                 <?php foreach($posts as $post): ?>
                     <div class="row">
                         <div class="col-md-12">
@@ -38,7 +38,7 @@
                     </div>
                 <?php endforeach; ?>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <h2>Testing like an article thing</h2>
                 <p>que, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti. Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus libero, faucibus adipiscing, commodo quis, gravida id, est. Sed lectus. Praesent elementum hendrerit tortor. Sed semper lorem at</p>
             </div>

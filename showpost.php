@@ -24,7 +24,6 @@ if($posts->rowCount() == 0)
 <?php require 'shared/header.php'; ?>
 
     <body>
-        <!-- This is going to need some work -->
         <a href="index.php">Back</a>
 
         <h1><?= $post['title'] ?></h1>

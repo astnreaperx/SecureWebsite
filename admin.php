@@ -7,13 +7,10 @@
 
     ob_start();
     session_start();
-    #require 'config/db_connect.php';
     require 'config/pdo_connect.php'; 
     require 'vendor/autoload.php';
-    #require_once 'PhpRbac/autoload.php'; 
 
     $rbac = new \PhpRbac\Rbac();
-
     $role_id = $rbac->Roles->returnId('admin');
     $user_id = $_SESSION['userid'];
 
